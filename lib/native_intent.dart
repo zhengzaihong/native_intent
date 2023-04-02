@@ -81,15 +81,13 @@ class NativeIntent {
 
   /// 通知原生通过参数构建意图并启动
   Future<void> launch() async {
-    if (!Platform.isAndroid) {
-      return;
-    }
-
     await _channel.invokeMethod<void>('launch', _buildArguments());
   }
 
+  ///主要提供给Android到 ，iOS还是触发launch函数
   Future<void> launchChooser(String title) async {
     if (!Platform.isAndroid) {
+      launch();
       return;
     }
 
@@ -102,6 +100,7 @@ class NativeIntent {
   }
 
 
+  ///提供给Android到
   Future<bool?> canResolveActivity() async {
     if (!Platform.isAndroid) {
       return false;

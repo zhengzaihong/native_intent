@@ -31,3 +31,24 @@
       package: 'com.taobao.taobao'
    );
    intent.launch();
+
+
+## ios 使用说明：
+
+ 1.[Info.plist] 添加Scheme 白名单
+
+    <key>LSApplicationQueriesSchemes</key>
+     <array>
+        <!--  URL Scheme 白名单-->
+        <string>taobao</string>
+        <string>vipshop</string>
+         xxxxxx
+        <!--  URL Scheme 白名单-->
+     </array>
+
+ 2. 启动方式同上，传入到参数必须data必须是有效值，其他参数ios 暂未使用！
+
+    NativeIntent intent = NativeIntent(
+    action: AndroidIntent.ACTION_VIEW, ///暂未使用
+    data: "taobao://s.click.taobao.com/NMJ5nJu");
+    intent.launch();

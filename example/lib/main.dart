@@ -35,8 +35,7 @@ class _MyAppState extends State<MyApp> {
 
             children: [
 
-
-              buildButton("启动淘宝(安卓)", (){
+              buildButton("启动淘宝", (){
                 String uri = "taobao://s.click.taobao.com/NMJ5nJu";
                 NativeIntent intent = NativeIntent(
                   action: AndroidIntent.ACTION_VIEW,
@@ -45,8 +44,6 @@ class _MyAppState extends State<MyApp> {
                 );
                 intent.launch();
               }),
-
-
             ],
           ),
         ),
