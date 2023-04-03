@@ -1,4 +1,4 @@
-package com.zzh.intent.native_intent
+package com.zzh.intent.flutter_intent_forzzh
 
 import android.app.Activity
 import android.content.Context

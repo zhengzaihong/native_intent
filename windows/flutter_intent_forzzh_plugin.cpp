@@ -1,4 +1,4 @@
-#include "native_intent_plugin.h"
+#include "flutter_intent_forzzh_plugin.h"
 
 // This must be included before many other Windows headers.
 #include <windows.h>
@@ -13,17 +13,17 @@
 #include <memory>
 #include <sstream>
 
-namespace native_intent {
+namespace flutter_intent_forzzh {
 
 // static
-void NativeIntentPlugin::RegisterWithRegistrar(
+void FlutterIntentForzzhPlugin::RegisterWithRegistrar(
     flutter::PluginRegistrarWindows *registrar) {
   auto channel =
       std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
-          registrar->messenger(), "native_intent",
+          registrar->messenger(), "flutter_intent_forzzh",
           &flutter::StandardMethodCodec::GetInstance());
 
-  auto plugin = std::make_unique<NativeIntentPlugin>();
+  auto plugin = std::make_unique<FlutterIntentForzzhPlugin>();
 
   channel->SetMethodCallHandler(
       [plugin_pointer = plugin.get()](const auto &call, auto result) {
@@ -33,11 +33,11 @@ void NativeIntentPlugin::RegisterWithRegistrar(
   registrar->AddPlugin(std::move(plugin));
 }
 
-NativeIntentPlugin::NativeIntentPlugin() {}
+FlutterIntentForzzhPlugin::FlutterIntentForzzhPlugin() {}
 
-NativeIntentPlugin::~NativeIntentPlugin() {}
+FlutterIntentForzzhPlugin::~FlutterIntentForzzhPlugin() {}
 
-void NativeIntentPlugin::HandleMethodCall(
+void FlutterIntentForzzhPlugin::HandleMethodCall(
     const flutter::MethodCall<flutter::EncodableValue> &method_call,
     std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
   if (method_call.method_name().compare("getPlatformVersion") == 0) {
@@ -56,4 +56,4 @@ void NativeIntentPlugin::HandleMethodCall(
   }
 }
 
-}  // namespace native_intent
+}  // namespace flutter_intent_forzzh

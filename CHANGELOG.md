@@ -1,3 +1,3 @@
 ## 0.0.1
 
-第一个可用的初始版本.
+* TODO: Describe initial release.

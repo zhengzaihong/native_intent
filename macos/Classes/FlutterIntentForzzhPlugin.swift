@@ -1,10 +1,10 @@
 import Cocoa
 import FlutterMacOS
 
-public class NativeIntentPlugin: NSObject, FlutterPlugin {
+public class FlutterIntentForzzhPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "native_intent", binaryMessenger: registrar.messenger)
-    let instance = NativeIntentPlugin()
+    let channel = FlutterMethodChannel(name: "flutter_intent_forzzh", binaryMessenger: registrar.messenger)
+    let instance = FlutterIntentForzzhPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 

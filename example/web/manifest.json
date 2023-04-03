@@ -1,11 +1,11 @@
 {
-    "name": "native_intent_example",
-    "short_name": "native_intent_example",
+    "name": "flutter_intent_forzzh_example",
+    "short_name": "flutter_intent_forzzh_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Demonstrates how to use the native_intent plugin.",
+    "description": "Demonstrates how to use the flutter_intent_forzzh plugin.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

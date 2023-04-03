@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.zzh.intent" "\0"
-            VALUE "FileDescription", "native_intent_example" "\0"
+            VALUE "FileDescription", "flutter_intent_forzzh_example" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "native_intent_example" "\0"
+            VALUE "InternalName", "flutter_intent_forzzh_example" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.zzh.intent. All rights reserved." "\0"
-            VALUE "OriginalFilename", "native_intent_example.exe" "\0"
-            VALUE "ProductName", "native_intent_example" "\0"
+            VALUE "OriginalFilename", "flutter_intent_forzzh_example.exe" "\0"
+            VALUE "ProductName", "flutter_intent_forzzh_example" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

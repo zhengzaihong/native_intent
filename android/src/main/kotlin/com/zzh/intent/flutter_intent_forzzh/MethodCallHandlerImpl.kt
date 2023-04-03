@@ -1,4 +1,4 @@
-package com.zzh.intent.native_intent
+package com.zzh.intent.flutter_intent_forzzh
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.BinaryMessenger

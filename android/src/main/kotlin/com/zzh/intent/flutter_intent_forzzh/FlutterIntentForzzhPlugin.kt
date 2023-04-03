@@ -1,19 +1,25 @@
-package com.zzh.intent.native_intent
+package com.zzh.intent.flutter_intent_forzzh
 
 import androidx.annotation.NonNull
+import com.zzh.intent.flutter_intent_forzzh.IntentLauncher
+import com.zzh.intent.flutter_intent_forzzh.MethodCallHandlerImpl
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.embedding.engine.plugins.activity.ActivityAware
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler
+import io.flutter.plugin.common.MethodChannel.Result
 
 /**
-* create_user: zhengzaihong
-* email:1096877329@qq.com
-* create_date: 2023/3/31
-* create_time: 13:41
-* describe: 提供给Android的 intent,
+ * create_user: zhengzaihong
+ * email:1096877329@qq.com
+ * create_date: 2023/3/31
+ * create_time: 13:41
+ * describe: 提供给Android的 intent,
  * ios 查看 ios目录下配置
-*/
-class NativeIntentPlugin: FlutterPlugin, ActivityAware {
+ */
+
+class FlutterIntentForzzhPlugin: FlutterPlugin, ActivityAware {
 
   private var launcher: IntentLauncher = IntentLauncher( /*activity=*/null,  /*applicationContext=*/null)
   private var impl: MethodCallHandlerImpl = MethodCallHandlerImpl(launcher)

@@ -28,19 +28,19 @@ class _MyAppState extends State<MyApp> {
             children: [
 
               buildButton("启动淘宝", (){
-                // String uri = "taobao://s.click.taobao.com/NMJ5nJu";
-                // NativeIntent intent = NativeIntent(
-                //   action: AndroidIntent.ACTION_VIEW,
-                //   data: uri,
-                //   // package: 'com.taobao.taobao'
-                // );
-                // intent.launch();
-
-
-                NativeIntent intent = const NativeIntent(
-                  action: Settings.ACTION_NFC_SETTINGS,//跳转系统NFC 设置
+                String uri = "taobao://s.click.taobao.com/NMJ5nJu";
+                NativeIntent intent = NativeIntent(
+                  action: AndroidIntent.ACTION_VIEW,
+                  data: uri,
+                  // package: 'com.taobao.taobao'
                 );
                 intent.launch();
+
+
+                // NativeIntent intent = const NativeIntent(
+                //   action: Settings.ACTION_NFC_SETTINGS,//跳转系统NFC 设置
+                // );
+                // intent.launch();
 
               }),
             ],

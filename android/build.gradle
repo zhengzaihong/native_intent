@@ -1,4 +1,4 @@
-group 'com.zzh.intent.native_intent'
+group 'com.zzh.intent.flutter_intent_forzzh'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -43,7 +43,6 @@ android {
     defaultConfig {
         minSdkVersion 16
     }
-    buildToolsVersion '31.0.0'
 }
 
 dependencies {

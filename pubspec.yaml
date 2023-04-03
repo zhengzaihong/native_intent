@@ -1,7 +1,7 @@
 name: flutter_intent_forzzh
-description: flutter_intent_forzzh
+description: A new Flutter project.
 version: 0.0.1
-homepage: https://github.com/zhengzaihong/native_intent
+homepage:
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -37,19 +37,19 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.zzh.intent.native_intent
-        pluginClass: NativeIntentPlugin
+        package: com.zzh.intent.flutter_intent_forzzh
+        pluginClass: FlutterIntentForzzhPlugin
       ios:
-        pluginClass: NativeIntentPlugin
+        pluginClass: FlutterIntentForzzhPlugin
 #      linux:
-#        pluginClass: NativeIntentPlugin
+#        pluginClass: FlutterIntentForzzhPlugin
 #      macos:
-#        pluginClass: NativeIntentPlugin
+#        pluginClass: FlutterIntentForzzhPlugin
 #      windows:
-#        pluginClass: NativeIntentPluginCApi
+#        pluginClass: FlutterIntentForzzhPluginCApi
 #      web:
-#        pluginClass: NativeIntentWeb
-#        fileName: native_intent_web.dart
+#        pluginClass: FlutterIntentForzzhWeb
+#        fileName: flutter_intent_forzzh_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

@@ -1,22 +1,22 @@
 PODS:
   - Flutter (1.0.0)
-  - native_intent (0.0.1):
+  - flutter_intent_forzzh (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - native_intent (from `.symlinks/plugins/native_intent/ios`)
+  - flutter_intent_forzzh (from `.symlinks/plugins/flutter_intent_forzzh/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  native_intent:
-    :path: ".symlinks/plugins/native_intent/ios"
+  flutter_intent_forzzh:
+    :path: ".symlinks/plugins/flutter_intent_forzzh/ios"
 
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  native_intent: 498352125ce576f87da41d885c2c60f089d65e23
+  flutter_intent_forzzh: a12045db9ea12859ab1e0a8290f03d1665d31a7a
 
-PODFILE CHECKSUM: fe0e1ee7f3d1f7d00b11b474b62dd62134535aea
+PODFILE CHECKSUM: 3dffd8c48b531d21ec0ec153c22dc8e3a6223bc9
 
 COCOAPODS: 1.12.0

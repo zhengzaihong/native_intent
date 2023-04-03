@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project-level configuration.
-set(PROJECT_NAME "native_intent")
+set(PROJECT_NAME "flutter_intent_forzzh")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # This value is used when generating builds using this plugin, so it must
 # not be changed.
-set(PLUGIN_NAME "native_intent_plugin")
+set(PLUGIN_NAME "flutter_intent_forzzh_plugin")
 
 # Define the plugin library target. Its name must not be changed (see comment
 # on PLUGIN_NAME above).
 #
 # Any new source files that you add to the plugin should be added here.
 add_library(${PLUGIN_NAME} SHARED
-  "native_intent_plugin.cc"
+  "flutter_intent_forzzh_plugin.cc"
 )
 
 # Apply a standard set of build settings that are configured in the
@@ -41,7 +41,7 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
-set(native_intent_bundled_libraries
+set(flutter_intent_forzzh_bundled_libraries
   ""
   PARENT_SCOPE
 )

@@ -1,6 +1,6 @@
-# native_intent_example
+# flutter_intent_forzzh_example
 
-Demonstrates how to use the native_intent plugin.
+Demonstrates how to use the flutter_intent_forzzh plugin.
 
 ## Getting Started
 
