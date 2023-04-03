@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:native_intent/android/android_intent.dart';
-import 'package:native_intent/native_intent.dart';
+import 'package:flutter_intent_forzzh/native_intent_lib.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +13,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-  @override
-  void initState() {
-    super.initState();
-
-
-  }
 
 
   @override
@@ -36,13 +28,20 @@ class _MyAppState extends State<MyApp> {
             children: [
 
               buildButton("启动淘宝", (){
-                String uri = "taobao://s.click.taobao.com/NMJ5nJu";
-                NativeIntent intent = NativeIntent(
-                  action: AndroidIntent.ACTION_VIEW,
-                  data: uri,
-                  // package: 'com.taobao.taobao'
+                // String uri = "taobao://s.click.taobao.com/NMJ5nJu";
+                // NativeIntent intent = NativeIntent(
+                //   action: AndroidIntent.ACTION_VIEW,
+                //   data: uri,
+                //   // package: 'com.taobao.taobao'
+                // );
+                // intent.launch();
+
+
+                NativeIntent intent = const NativeIntent(
+                  action: Settings.ACTION_NFC_SETTINGS,//跳转系统NFC 设置
                 );
                 intent.launch();
+
               }),
             ],
           ),

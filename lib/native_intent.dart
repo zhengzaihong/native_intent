@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:native_intent/android/android_flags.dart';
-import 'package:native_intent/android/android_intent.dart';
-import 'package:native_intent/android/android_settings.dart';
+import 'package:flutter_intent_forzzh/android/android_flags.dart';
+import 'package:flutter_intent_forzzh/android/android_intent.dart';
+import 'package:flutter_intent_forzzh/android/android_settings.dart';
 
 ///通道名称
 const String _channelName = 'flutter_native_intent';
@@ -79,6 +79,7 @@ class NativeIntent {
     return finalValue;
   }
 
+  /// android、ios的唤起方法
   /// 通知原生通过参数构建意图并启动
   Future<void> launch() async {
     await _channel.invokeMethod<void>('launch', _buildArguments());
@@ -100,7 +101,7 @@ class NativeIntent {
   }
 
 
-  ///提供给Android到
+  ///提供给Android使用
   Future<bool?> canResolveActivity() async {
     if (!Platform.isAndroid) {
       return false;

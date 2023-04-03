@@ -3,6 +3,13 @@ import UIKit
 
 let methodChannelName:String = "flutter_native_intent"
 
+/**
+* create_user: zhengzaihong
+* email:1096877329@qq.com
+* create_date: 2023/4/3
+* create_time: 9:40
+* describe: 此插件只支持ios 10.0以上。
+*/
 @available(iOS 10.0, *)
 public class SwiftNativeIntentPlugin: NSObject, FlutterPlugin {
     

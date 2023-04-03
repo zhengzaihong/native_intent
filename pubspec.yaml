@@ -1,7 +1,7 @@
-name: native_intent
-description: A new Flutter project.
+name: flutter_intent_forzzh
+description: flutter_intent_forzzh
 version: 0.0.1
-homepage:
+homepage: https://github.com/zhengzaihong/native_intent
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
