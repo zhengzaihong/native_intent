@@ -29,19 +29,18 @@ class _MyAppState extends State<MyApp> {
 
               buildButton("启动淘宝", (){
                 // String uri = "taobao://s.click.taobao.com/NMJ5nJu";
-                // NativeIntent intent = NativeIntent(
-                //   action: AndroidIntent.ACTION_VIEW,
-                //   data: uri,
-                //   // package: 'com.taobao.taobao'
-                // );
-                // intent.launch();
-
-
-                NativeIntent intent =   const NativeIntent(
+                NativeIntent intent = NativeIntent(
+                  action: Settings.ACTION_ACCESSIBILITY_SETTINGS,
                   // data: uri,
-                  action: IOSIntent.APPSTORE,//跳转app store
                 );
                 intent.launch();
+
+
+                // NativeIntent intent =   const NativeIntent(
+                //   // data: uri,
+                //   action: IOSIntent.APPSTORE,//跳转app store
+                // );
+                // intent.launch();
               }),
             ],
           ),

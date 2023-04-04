@@ -61,7 +61,7 @@
         );
         intent.launch();
 
-        或者启动系统界面
+3.或者启动系统界面
 
         NativeIntent intent =  const NativeIntent(
             action: IOSIntent.APPSTORE,//跳转app store
