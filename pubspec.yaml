@@ -1,7 +1,8 @@
 name: flutter_intent_forzzh
-description: A new Flutter project.
-version: 0.0.1
-homepage:
+description: A plug-in for launching native android or ios.
+version: 0.0.2
+homepage: https://github.com/zhengzaihong/native_intent
+
 
 environment:
   sdk: ">=2.17.6 <3.0.0"

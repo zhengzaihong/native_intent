@@ -1,14 +1,9 @@
 package com.zzh.intent.flutter_intent_forzzh
 
 import androidx.annotation.NonNull
-import com.zzh.intent.flutter_intent_forzzh.IntentLauncher
-import com.zzh.intent.flutter_intent_forzzh.MethodCallHandlerImpl
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 
 /**
  * create_user: zhengzaihong
