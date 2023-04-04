@@ -40,6 +40,15 @@ public class SwiftFlutterIntentForzzhPlugin: NSObject, FlutterPlugin {
                      UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                    }
                }
+         
+               if action != nil{
+                   if let url_action = URL(string: action as! String) {
+                       if UIApplication.shared.canOpenURL(url_action) {
+                           UIApplication.shared.open(url_action, options: [:], completionHandler: nil)
+                       }
+                   }
+               }
+
          }
        }
    }

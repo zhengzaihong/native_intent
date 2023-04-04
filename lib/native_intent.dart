@@ -29,8 +29,8 @@ class NativeIntent {
     this.package,
     this.componentName,
     this.type,
-  })  : assert(action != null || componentName != null,
-  'action 或者 componentName 或者两者必须指定值'),
+  })  : assert(action != null || data != null, 'action 或者 data 或者两者必须指定值'),
+
         _channel = const MethodChannel(_channelName);
 
 

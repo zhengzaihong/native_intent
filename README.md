@@ -54,10 +54,16 @@
             <!--  URL Scheme 白名单-->
          </array>
 
-2.启动方式同上，传入到参数data必须是有效值，其他参数ios 暂未使用！
+2.启动方式同上，传入参数data必须是有效值.
 
         var intent = NativeIntent(
-        action: AndroidIntent.ACTION_VIEW, ///暂未使用
-        data: "taobao://s.click.taobao.com/NMJ5nJu");
-    
+          data: "taobao://s.click.taobao.com/NMJ5nJu"
+        );
+        intent.launch();
+
+        或者启动系统界面
+
+        NativeIntent intent =  const NativeIntent(
+            action: IOSIntent.APPSTORE,//跳转app store
+        );
         intent.launch();

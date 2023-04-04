@@ -37,11 +37,11 @@ class _MyAppState extends State<MyApp> {
                 // intent.launch();
 
 
-                NativeIntent intent = const NativeIntent(
-                  action: Settings.ACTION_NFC_SETTINGS,//跳转系统NFC 设置
+                NativeIntent intent =   const NativeIntent(
+                  // data: uri,
+                  action: IOSIntent.APPSTORE,//跳转app store
                 );
                 intent.launch();
-
               }),
             ],
           ),
