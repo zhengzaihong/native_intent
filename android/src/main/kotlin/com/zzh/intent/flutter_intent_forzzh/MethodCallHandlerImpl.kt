@@ -6,6 +6,7 @@ import io.flutter.plugin.common.MethodCall
 import android.net.Uri
 import android.os.Bundle
 import android.content.ComponentName
+import android.content.Intent
 import android.text.TextUtils
 import android.util.Log
 import java.util.ArrayList
@@ -95,6 +96,14 @@ class MethodCallHandlerImpl(private val intentLauncher: IntentLauncher) : Method
                 "canResolveActivity".equals(call.method, ignoreCase = true) -> {
                     result.success(intentLauncher.canResolveActivity(intent))
                 }
+
+                "restartApp".equals(call.method, ignoreCase = true) -> {
+                    intent?.let {
+                        intentLauncher.restartApp()
+                        result.success("ok")
+                    }
+                }
+
                 else -> {
                     result.notImplemented()
                 }

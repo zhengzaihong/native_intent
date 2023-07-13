@@ -30,6 +30,16 @@ public class SwiftFlutterIntentForzzhPlugin: NSObject, FlutterPlugin {
            var url = mapIntent["data"]
            let type = mapIntent["type"]
 
+           if call.method == "restartApp"{
+              self.requestNotificationPermissions { granted in
+                    if granted {
+                      self.sendNotification()
+                    }
+                    //exit(0)
+                  }
+           }
+
+
            if call.method == "launch"{
                if let relUrl = url{
                    let url = URL(string:relUrl as! String)
@@ -40,7 +50,7 @@ public class SwiftFlutterIntentForzzhPlugin: NSObject, FlutterPlugin {
                      UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                    }
                }
-         
+
                if action != nil{
                    if let url_action = URL(string: action as! String) {
                        if UIApplication.shared.canOpenURL(url_action) {
@@ -52,4 +62,36 @@ public class SwiftFlutterIntentForzzhPlugin: NSObject, FlutterPlugin {
          }
        }
    }
-  }
+
+     /// Requests notification permissions.
+     ///
+     /// This function gets the current notification center and then requests alert notification
+     /// permissions. If the permissions are granted, or if there's an error, it calls the given
+     /// `completion` handler with the appropriate value.
+     private func requestNotificationPermissions(completion: @escaping (Bool) -> Void) {
+       let current = UNUserNotificationCenter.current()
+       current.requestAuthorization(options: [.alert]) { granted, error in
+         if let error = error {
+           print("Error requesting notification permissions: \(error)")
+           completion(false)
+         } else {
+           completion(granted)
+         }
+       }
+     }
+
+     /// Sends a notification.
+     ///
+     /// This function sets up the notification content and trigger, creates a notification request,
+     /// and then adds the request to the notification center.
+     private func sendNotification() {
+       let content = UNMutableNotificationContent()
+       content.title = "Tap to open the app!"
+       content.sound = nil
+
+       let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+       let request = UNNotificationRequest(identifier: "RestartApp", content: content, trigger: trigger)
+
+       UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+     }
+ }

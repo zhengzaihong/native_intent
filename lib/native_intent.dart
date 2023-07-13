@@ -129,4 +129,9 @@ class NativeIntent {
       if (type != null) 'type': type,
     };
   }
+
+
+  ///提供重启app的意图
+  Future<bool> restartApp() async =>
+      (await _channel.invokeMethod('restartApp',_buildArguments())) == "ok";
 }

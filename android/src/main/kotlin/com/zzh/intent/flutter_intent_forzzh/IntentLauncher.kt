@@ -20,11 +20,9 @@ import android.util.Log
 */
 class IntentLauncher(private var activity: Activity?, private var applicationContext: Context?) {
 
-
     companion object {
         private const val TAG = "IntentLauncher"
     }
-
 
      fun launcher(intent: Intent) {
         if (!checkContext()){
@@ -130,5 +128,19 @@ class IntentLauncher(private var activity: Activity?, private var applicationCon
             return false
         }
         return true
+    }
+
+    open fun restartApp(){
+        if (!checkContext()){
+            return
+        }
+        applicationContext?.startActivity(
+            Intent.makeRestartActivityTask(
+                (applicationContext!!.packageManager.getLaunchIntentForPackage(
+                    applicationContext!!.packageName
+                ))!!.component
+            )
+        )
+        //Runtime.getRuntime().exit(0)
     }
 }
