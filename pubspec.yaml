@@ -1,6 +1,6 @@
-name: flutter_intent_forzzh
+name: intent_plus
 description: A plug-in for launching native android or ios.
-version: 0.0.2
+version: 0.1.0
 homepage: https://github.com/zhengzaihong/native_intent
 
 
@@ -38,16 +38,16 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.zzh.intent.flutter_intent_forzzh
-        pluginClass: FlutterIntentForzzhPlugin
+        package: com.intent.intent_plus
+        pluginClass: FlutterIntentPlusPlugin
       ios:
-        pluginClass: FlutterIntentForzzhPlugin
+        pluginClass: FlutterIntentPlusPlugin
 #      linux:
-#        pluginClass: FlutterIntentForzzhPlugin
+#        pluginClass: FlutterIntentPlusPlugin
 #      macos:
-#        pluginClass: FlutterIntentForzzhPlugin
+#        pluginClass: FlutterIntentPlusPlugin
 #      windows:
-#        pluginClass: FlutterIntentForzzhPluginCApi
+#        pluginClass: FlutterIntentPlusPluginCApi
 #      web:
 #        pluginClass: FlutterIntentForzzhWeb
 #        fileName: flutter_intent_forzzh_web.dart

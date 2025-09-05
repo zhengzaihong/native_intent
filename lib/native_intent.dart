@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_intent_forzzh/android/android_flags.dart';
-import 'package:flutter_intent_forzzh/android/android_intent.dart';
-import 'package:flutter_intent_forzzh/android/android_settings.dart';
+import 'package:intent_plus/android/android_flags.dart';
+import 'package:intent_plus/android/android_intent.dart';
+import 'package:intent_plus/android/android_settings.dart';
 
 ///通道名称
 const String _channelName = 'flutter_native_intent';
@@ -81,12 +81,12 @@ class NativeIntent {
 
   /// android、ios的唤起方法
   /// 通知原生通过参数构建意图并启动
-  Future<void> launch() async {
-    await _channel.invokeMethod<void>('launch', _buildArguments());
+  Future<dynamic> launch() async {
+    await _channel.invokeMethod<dynamic>('launch', _buildArguments());
   }
 
   ///主要提供给Android到 ，iOS还是触发launch函数
-  Future<void> launchChooser(String title) async {
+  Future<dynamic> launchChooser(String title) async {
     if (!Platform.isAndroid) {
       launch();
       return;
@@ -94,7 +94,7 @@ class NativeIntent {
 
     final buildArguments = _buildArguments();
     buildArguments['chooserTitle'] = title;
-    await _channel.invokeMethod<void>(
+    await _channel.invokeMethod<dynamic>(
       'launchChooser',
       buildArguments,
     );
@@ -134,4 +134,6 @@ class NativeIntent {
   ///提供重启app的意图
   Future<bool> restartApp() async =>
       (await _channel.invokeMethod('restartApp',_buildArguments())) == "ok";
+
+
 }

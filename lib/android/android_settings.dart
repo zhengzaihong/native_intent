@@ -37,6 +37,7 @@ class Settings {
    static const String ACTION_DEVICE_INFO_SETTINGS = "android.settings.DEVICE_INFO_SETTINGS";
    static const String ACTION_DISPLAY_SETTINGS = "android.settings.DISPLAY_SETTINGS";
    static const String ACTION_DREAM_SETTINGS = "android.settings.DREAM_SETTINGS";
+
   /** @deprecated */
    @deprecated
    static const String ACTION_FINGERPRINT_ENROLL = "android.settings.FINGERPRINT_ENROLL";

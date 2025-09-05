@@ -1,6 +1,6 @@
 # flutter_intent_forzzh_example
 
-Demonstrates how to use the flutter_intent_forzzh plugin.
+Demonstrates how to use the intent_plus plugin.
 
 ## Getting Started
 

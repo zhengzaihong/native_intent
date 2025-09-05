@@ -19,11 +19,9 @@
 2.启动通过 Scheme 启动
 
     NativeIntent intent = NativeIntent(
-       action: AndroidIntent.ACTION_VIEW,
+       action: AndroidIntent.ACTION_VIEW, //如果内置的缺失，请使用字符串传入即可eg："android.intent.action.VIEW"
        data: "taobao://s.click.taobao.com/NMJ5nJu",
-    );
-        
-    intent.launch();
+    ).launch();
 
 3.启动通过 AppId启动
 
