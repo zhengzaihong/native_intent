@@ -42,15 +42,9 @@ flutter:
         pluginClass: FlutterIntentPlusPlugin
       ios:
         pluginClass: FlutterIntentPlusPlugin
-#      linux:
-#        pluginClass: FlutterIntentPlusPlugin
-#      macos:
-#        pluginClass: FlutterIntentPlusPlugin
-#      windows:
-#        pluginClass: FlutterIntentPlusPluginCApi
-#      web:
-#        pluginClass: FlutterIntentForzzhWeb
-#        fileName: flutter_intent_forzzh_web.dart
+      ohos:
+        package: com.intent.intent_plus
+        pluginClass: IntentPlusPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

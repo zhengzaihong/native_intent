@@ -42,7 +42,16 @@ class _MyAppState extends State<MyApp> {
                       data: "taobao://s.click.taobao.com/NMJ5nJu",
                     ).launch();
                   },
-                  child: const Text("启动淘宝")),
+                  child: const Text("Android启动淘宝")),
+
+              FilledButton.tonal(
+                  onPressed: () {
+                    const NativeIntent(
+                      action: AndroidIntent.ACTION_VIEW,
+                      data: "taobao://s.click.taobao.com/NMJ5nJu",
+                    ).launch();
+                  },
+                  child: const Text("Harmony")),
 
               FilledButton.tonal(
                   onPressed: () {

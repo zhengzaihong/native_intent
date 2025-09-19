@@ -15,7 +15,7 @@ const String _channelName = 'flutter_native_intent';
 /// create_date: 2023/3/31
 /// create_time: 16:12
 /// describe: 构建意图用于启动
-/// android或ios 系统界面或者跳转三方app
+/// android 、ios 、harmony 系统界面或者跳转三方app
 ///
 class NativeIntent {
 
@@ -82,7 +82,7 @@ class NativeIntent {
   /// android、ios的唤起方法
   /// 通知原生通过参数构建意图并启动
   Future<dynamic> launch() async {
-    await _channel.invokeMethod<dynamic>('launch', _buildArguments());
+   return await _channel.invokeMethod<dynamic>('launch', _buildArguments());
   }
 
   ///主要提供给Android到 ，iOS还是触发launch函数
@@ -94,7 +94,7 @@ class NativeIntent {
 
     final buildArguments = _buildArguments();
     buildArguments['chooserTitle'] = title;
-    await _channel.invokeMethod<dynamic>(
+   return await _channel.invokeMethod<dynamic>(
       'launchChooser',
       buildArguments,
     );
