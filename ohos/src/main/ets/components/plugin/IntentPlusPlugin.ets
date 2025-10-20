@@ -1,4 +1,5 @@
 import {
+  Any,
   FlutterPlugin,
   FlutterPluginBinding,
   MethodCall,
@@ -37,8 +38,9 @@ export default class IntentPlusPlugin implements FlutterPlugin, MethodCallHandle
   }
 
   onAttachedToEngine(binding: FlutterPluginBinding): void {
-    this.channel = new MethodChannel(binding.getBinaryMessenger(), "intent_plus");
+    this.channel = new MethodChannel(binding.getBinaryMessenger(), "flutter_native_intent");
     this.channel.setMethodCallHandler(this)
+    console.debug(TAG, 'onAttachedToEngine ')
   }
 
   onDetachedFromAbility(): void {
@@ -59,65 +61,85 @@ export default class IntentPlusPlugin implements FlutterPlugin, MethodCallHandle
     console.info(`-----------MethodCall:${call.method}`);
     if (call.method == "getPlatformVersion") {
       result.success("OpenHarmony ^ ^ ")
-    } else if (call.method == "canOpenLink") {
-      // const targetUri: string = call.parameters?.data || '';
-      // // 检查是否可打开该链接
-      // const canOpen = await bundleManager.canOpenLink(targetUri);
-      // result.success(canOpen ? 1 : 0)
     } else if (call.method == "restartApp") {
       // 触发应用重启
       appRecovery.restartApp();
     } else if (call.method == "launch") {
       // 解析传入的URI参数
-      // const targetUri: string = (call)?.data || '';
-      // const action: string = (call)?.action || '';
-      // const category: string = (call)?.category || '';
-      // const flags: number = Number((call)?.flags) || null;
-      // const package: string = (call)?.package || '';
-      // const componentName: string = (call)?.componentName || '';
-      // const type: string = (call)?.type || '';
+      const targetUri: string = (call)?.argument("data") || '';
+      const action: string = (call)?.argument("action") || '';
+      const type: string = (call)?.argument("type") || '';
+      const category: string = (call)?.argument("category") || '';
+      const bundleName: string = call?.argument("package") || '';
+      const componentName: string = call?.argument("componentName") || '';
       // // 对象类型
-      // const arguments: Record<string, any> = (call)?.arguments as Record<string, any>;
+      const argument: Record<string, Any> = call?.argument("arguments") as Record<string, Any>;
 
-      console.info('-----------222222');
+      console.info(`-----------targetUri:${targetUri}`);
+      console.info(`-----------action:${action}`);
+      console.info(`-----------category:${category}`);
+      console.info(`-----------bundleName:${bundleName}`);
+      console.info(`-----------componentName:${componentName}`);
+      console.info(`-----------argument:${argument}`);
       try {
-        // let want: Want = {};
-        // if (package != "" && componentName != "") {
-        //   want = {
-        //     deviceId: "", // 空表示本机
-        //     bundleName: package, // 目标应用包名
-        //     abilityName: componentName, // 入口 Ability 名称
-        //     parameters: arguments
-        //   }
-        // } else {
-        //   want = {
-        //     action: action, // 标准视图动作
-        //     uri: targetUri, // 例如:"appScheme://www.example.com/path?key=value"
-        //     entities: [category] // 明确拉起浏览器类应用
-        //   }
-        // }
-        console.info('-----------3333333');
-        let want: Want = {
-          action: "ohos.settings.ACTION_SETTINGS", // 标准视图动作
+        //示例：跳转到 WLAN 设置页 常用 uri 值：
+        // wifi_entry（WLAN 页）
+        // bluetooth_entry（蓝牙页）
+        // location_manager_settings（位置页）1
+        // volume_settings（声音和振动页）。
+        // let want: Want = {
+        //   bundleName: 'com.huawei.hmos.settings',
+        //   abilityName: 'com.huawei.hmos.settings.MainAbility',
+        //   uri: 'wifi_entry'
+        // };
+
+        if(type == "link"){
+          this.context?.openLink(targetUri, { appLinkingOnly: true })
+            .then(() => {
+              result.success(true)
+            })
+            .catch((err: BusinessError) => {
+              if (err.code === 16000019) {
+                // 目标应用未安装或链接不合法,降级到浏览器打开
+                this.context?.openLink(targetUri, { appLinkingOnly: false }).then(()=>{
+                  result.success(true)
+                })
+              }
+            });
+        }else{
+
+          let want: Want = {};
+          if (bundleName != "" && componentName != "") {
+            want = {
+              deviceId: "", // 空表示本机
+              bundleName: bundleName, // 目标应用包名
+              abilityName: componentName, // 入口 Ability 名称
+              parameters: argument,
+              uri:targetUri
+            }
+          } else {
+            want = {
+              action: action, // 标准视图动作
+              uri: targetUri, // 例如:"appScheme://xx.xx.com/path?key=value"
+              entities: [category] // entity.system.browsable 明确拉起浏览器类应用
+            }
+          }
+          // 执行应用拉起操作
+          this.context?.startAbility(want).then(() => {
+            console.info('---应用拉起成功');
+            result.success("1")
+          })?.catch((err: BusinessError) => {
+            console.info(`---拉起失败，错误码: ${err.code}, 信息: ${err.message}`);
+            result.success(false)
+          });
         }
 
-        // 执行应用拉起操作
-        this.context?.startAbility(want).then(() => {
-          console.info('-----------4444444');
-          console.info('应用拉起成功');
-          result.success("1")
-        })?.catch((err: BusinessError) => {
-          console.info('-----------555555');
-          console.error(`拉起失败，错误码: ${err.code}, 信息: ${err.message}`);
-          result.success("0")
-        });
       } catch (error) {
-        console.info('-----------6666666');
-        console.error(`参数校验失败: ${(error as BusinessError).message}`);
-        result.success("0")
+        console.info(`---参数校验失败: ${(error as BusinessError).message}`);
+        result.success(false)
       }
     } else {
-      console.info('-----------77777777');
+      console.info(`方法未实现`);
       result.notImplemented()
     }
   }

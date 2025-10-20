@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intent_plus/android/android_flags.dart';
 import 'package:intent_plus/native_intent_lib.dart';
 
 void main() {
@@ -27,29 +28,54 @@ class _MyAppState extends State<MyApp> {
               FilledButton.tonal(
                   onPressed: () {
                     const NativeIntent(
-                      action: "android.settings.APPLICATION_SETTINGS",
-                      // action: Settings.ACTION_APP_SEARCH_SETTINGS,//没有的请手动 添加
+                      action: AndroidAction.ACTION_DIAL,
+                      data: 'tel:10086',
+                      flags: [AndroidFlags.FLAG_ACTIVITY_NEW_TASK],
+                    ).launch();
+                  },
+                  child: const Text("打开电话")),
+
+              FilledButton.tonal(
+                  onPressed: () {
+                    const intent = NativeIntent(
+                        action: AndroidAction.ACTION_VIEW,
+                        flags: [AndroidFlags.FLAG_ACTIVITY_NEW_TASK],
+                        package: 'com.taobao.taobao',
+                    );
+                    intent.launch().then((value){
+                      debugPrint("---value: $value");
+                    });
+                  },
+                  child: const Text("Android 包名启动淘宝")),
+
+              FilledButton.tonal(
+                  onPressed: () {
+                    const NativeIntent(
+                      action: AndroidAction.ACTION_VIEW,
+                      data: "taobao://s.click.taobao.com/NMJ5nJu",
                     ).launch().then((value){
                       debugPrint("---value: $value");
                     });
                   },
-                  child: const Text("打开Android-无障碍设置")),
+                  child: const Text("Android 链接启动淘宝")),
 
               FilledButton.tonal(
                   onPressed: () {
-                    const NativeIntent(
-                      action: AndroidIntent.ACTION_VIEW,
-                      data: "taobao://s.click.taobao.com/NMJ5nJu",
-                    ).launch();
-                  },
-                  child: const Text("Android启动淘宝")),
 
-              FilledButton.tonal(
-                  onPressed: () {
                     const NativeIntent(
-                      action: AndroidIntent.ACTION_VIEW,
+                      action: HarmonyAction.VIEW_DATA,
                       data: "taobao://s.click.taobao.com/NMJ5nJu",
+                      type: "link"
                     ).launch();
+
+                    //
+                    // const NativeIntent(
+                    //     package: "com.huawei.hmos.settings",
+                    //     componentName: "com.huawei.hmos.settings.MainAbility",
+                    //     data: "wifi_entry",
+                    // ).launch();
+
+
                   },
                   child: const Text("Harmony")),
 

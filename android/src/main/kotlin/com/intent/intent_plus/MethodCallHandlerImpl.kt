@@ -1,16 +1,16 @@
 package com.intent.intent_plus
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.BinaryMessenger
-import io.flutter.plugin.common.MethodCall
+import android.content.ComponentName
 import android.net.Uri
 import android.os.Bundle
-import android.content.ComponentName
 import android.text.TextUtils
 import android.util.Log
-import java.util.ArrayList
-import java.lang.UnsupportedOperationException
+import io.flutter.plugin.common.BinaryMessenger
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import java.lang.Class
+import java.lang.UnsupportedOperationException
+import java.util.ArrayList
 
 /**
 * create_user: zhengzaihong
@@ -23,7 +23,7 @@ class MethodCallHandlerImpl(private val intentLauncher: IntentLauncher) : Method
 
     private var methodChannel: MethodChannel? = null
 
-   open fun startListening(messenger: BinaryMessenger?) {
+   fun startListening(messenger: BinaryMessenger?) {
 
         messenger?.let {
             if (methodChannel != null) {
@@ -37,7 +37,7 @@ class MethodCallHandlerImpl(private val intentLauncher: IntentLauncher) : Method
     }
 
 
-   open fun stopListening() {
+   fun stopListening() {
         if (methodChannel == null) {
             return
         }
@@ -71,26 +71,31 @@ class MethodCallHandlerImpl(private val intentLauncher: IntentLauncher) : Method
 
             //构建意图
             val intent = intentLauncher.buildIntent(action, flags, category, data, arguments, packageName, componentName, type)
-
             when {
 
                 "launch".equals(call.method, ignoreCase = true) -> {
-
-                    intent?.let {
-                        if (intentLauncher.canResolveActivity(it)) {
-                            return
+                    try {
+                        intent?.let {
+                            intentLauncher.launcher(it)
+                            result.success(true)
                         }
-                        Log.i(TAG, "显示意图启动失败，即将尝试隐式意图！")
-                        it.setPackage(null)
-                        intentLauncher.launcher(it)
-                        result.success(null)
+                    }catch (e: Exception){
+                        Log.e(TAG, "Failed to launch intent with an unexpected error.", e)
+                        result.success(false)
                     }
                 }
 
                 "launchChooser".equals(call.method, ignoreCase = true) -> {
                     val title = call.argument<String>("chooserTitle")
-                    intentLauncher.launchChooser(intent, title)
-                    result.success(null)
+                    try {
+                        intent?.let {
+                            intentLauncher.launchChooser(it, title)
+                            result.success(true)
+                        }
+                    }catch (e: Exception){
+                        Log.e(TAG, "Failed to launch intent with an unexpected error.", e)
+                        result.success(false)
+                    }
                 }
 
                 "canResolveActivity".equals(call.method, ignoreCase = true) -> {

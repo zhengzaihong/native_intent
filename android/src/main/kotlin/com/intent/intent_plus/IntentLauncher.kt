@@ -1,12 +1,12 @@
 package com.intent.intent_plus
 
 import android.app.Activity
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.content.ComponentName
 import android.text.TextUtils
 import android.util.Log
 
@@ -45,7 +45,7 @@ class IntentLauncher(private var activity: Activity?, private var applicationCon
     }
 
     /**
-     * 通过包名启动程序 activity，像：com.hx.docap
+     * 检查是否有 Activity 能够响应该 Intent
      */
     fun canResolveActivity(intent: Intent?): Boolean {
         if (!checkContext()){
@@ -55,6 +55,21 @@ class IntentLauncher(private var activity: Activity?, private var applicationCon
         return packageManager.resolveActivity(intent!!, PackageManager.MATCH_DEFAULT_ONLY) != null
     }
 
+    /**
+     * 通过包名获取是否安装app
+     * 因为 Android 11+ 的包可见性限制，isInstallApp 可能会因为没有查询权限而返回 null
+     */
+    fun isInstallApp(packageName: String?): Intent? {
+        if (!checkContext() || TextUtils.isEmpty(packageName)){
+            return null
+        }
+        val packageManager = applicationContext!!.packageManager
+        return packageManager.getLaunchIntentForPackage(packageName!!)
+    }
+
+
+
+
     fun setActivity(activity: Activity?) {
         this.activity = activity
     }
@@ -62,6 +77,12 @@ class IntentLauncher(private var activity: Activity?, private var applicationCon
     fun setApplicationContext(applicationContext: Context?) {
         this.applicationContext = applicationContext
     }
+
+    fun getContext():Context? {
+        return applicationContext ?: this.activity?.applicationContext
+    }
+
+
 
 
     /**

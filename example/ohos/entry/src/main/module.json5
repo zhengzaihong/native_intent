@@ -11,6 +11,14 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
+    "querySchemes": [
+      "tel",
+      "taobao",
+      "wxopensdk",
+      "amapuri",
+      'baidumap',
+      'qqmap'
+    ],
     "abilities": [
       {
         "name": "EntryAbility",

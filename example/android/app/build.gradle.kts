@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.intent.intent_plus_example"
+    namespace = "com.intent.intent_plus"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -26,8 +26,8 @@ android {
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        versionCode = flutter.versionCode()
+        versionName = flutter.versionName()
     }
 
     buildTypes {

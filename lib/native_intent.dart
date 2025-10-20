@@ -3,8 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:intent_plus/android/android_flags.dart';
-import 'package:intent_plus/android/android_intent.dart';
-import 'package:intent_plus/android/android_settings.dart';
 
 ///通道名称
 const String _channelName = 'flutter_native_intent';
@@ -29,7 +27,7 @@ class NativeIntent {
     this.package,
     this.componentName,
     this.type,
-  })  : assert(action != null || data != null, 'action 或者 data 或者两者必须指定值'),
+  })  : assert(action != null || data != null, 'action 和 data 两者都不为 null或必须指定其中一个有值'),
 
         _channel = const MethodChannel(_channelName);
 
@@ -101,7 +99,7 @@ class NativeIntent {
   }
 
 
-  ///提供给Android使用
+  ///提供给Android使用 - 检查能否启动
   Future<bool?> canResolveActivity() async {
     if (!Platform.isAndroid) {
       return false;
@@ -132,8 +130,7 @@ class NativeIntent {
 
 
   ///提供重启app的意图
-  Future<bool> restartApp() async =>
-      (await _channel.invokeMethod('restartApp',_buildArguments())) == "ok";
+  Future<bool> restartApp() async => (await _channel.invokeMethod('restartApp',_buildArguments())) == "ok";
 
 
 }
